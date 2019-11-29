@@ -30,7 +30,18 @@ public class LocatrFragment extends Fragment {
         setHasOptionsMenu(true);
 
         mClient = new GoogleApiClient.Builder(getActivity()).
-                addApi(LocationServices.API).build();
+                addApi(LocationServices.API).
+                addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                    @Override
+                    public void onConnected(@Nullable Bundle bundle) {
+                        getActivity().invalidateOptionsMenu();
+                    }
+
+                    @Override
+                    public void onConnectionSuspended(int i) {
+
+                    }
+                }).build();
     }
 
     @Nullable
