@@ -89,7 +89,10 @@ public class LocatrFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.action_locate:
-                findImage();
+                if (hasLocationPermission()){
+                    findImage();
+                }
+
                 return true;
                 default:
                     return super.onOptionsItemSelected(item);
