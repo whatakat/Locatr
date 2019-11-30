@@ -77,6 +77,18 @@ public class LocatrFragment extends Fragment {
         MenuItem searchItem = menu.findItem(R.id.action_locate);
         searchItem.setEnabled(mClient.isConnected());
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_locate:
+                findImage();
+                return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+        }
+    }
+
     private void findImage(){
         LocationRequest request = LocationRequest.create();
         request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
